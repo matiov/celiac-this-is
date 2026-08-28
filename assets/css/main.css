@@ -3490,6 +3490,10 @@ input, select, textarea {
 				opacity: 0.75;
 			}
 
+		#banner.style0:after {
+			opacity: 0;
+		}
+
 		#banner.style1:after {
 			background-color: #6fc3df;
 		}
