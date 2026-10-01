@@ -9,10 +9,12 @@ Requirements
 - Jekyll gem (tested with 4.4.1)
 
 Note: on this machine, jekyll is installed under a non-standard gem path
-(VS Code's bundled Ruby gem home), not on the default PATH. Before running
-jekyll commands, set:
+(VS Code's bundled Ruby gem home), not on the default PATH. This path
+includes VS Code's snap revision number, which changes whenever VS Code
+updates (check with `readlink /home/<user>/snap/code/current` if the
+command below stops working). Before running jekyll commands, set:
 
-    export GEM_HOME=/home/matteo/snap/code/257/.local/share/gem/ruby/3.2.0
+    export GEM_HOME=/home/<user>/snap/code/current/.local/share/gem/ruby/3.2.0
     export PATH="$GEM_HOME/bin:$PATH"
 
 Running locally
