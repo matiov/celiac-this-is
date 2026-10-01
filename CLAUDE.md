@@ -22,8 +22,6 @@ non-standard `GEM_HOME` this machine needs.
   France): their tiles in `index.html` and entries in `_includes/menu.html` are
   commented out until `countries/<name>.html` exists. The contact form in
   `index.html` is commented out (Liquid `{% comment %}`) since it has no backend.
-  [landing.html](landing.html) and [generic.html](generic.html) are unmodified Forty
-  template pages, no longer linked from anywhere.
 - **Paths**: pages in `countries/` set `root: ../` in front matter and reference
   `../images/…` / `../assets/…`; the includes prefix paths with `{{ page.root }}`
   (empty for root-level pages). Keep this when adding a country page.

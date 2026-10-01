@@ -37,7 +37,7 @@ Don't touch restaurant names as they appear on Google Maps (e.g. "UNO RAMEN",
 ## 2. Comment out what isn't implemented
 
 "Not implemented" = still template content: Lorem Ipsum, `images/pic*.jpg`,
-`template_country.html` / `generic.html` / `landing.html` link targets, placeholder
+links to `template_country.html`, placeholder
 contact details, or a form with no backend.
 
 - **Unwritten countries**: a country is written once `countries/<name>.html` exists
@@ -46,7 +46,7 @@ contact details, or a form with no backend.
   When a country page *does* exist, make sure its tile and menu entry are
   uncommented and point at `countries/<name>.html` (menu: `{{ page.root }}countries/<name>.html`).
 - **Links to template pages**: spotlight images use `<a class="image">` with no
-  `href`; remove any `href="generic.html"` / `landing.html` / `template_country.html`.
+  `href`; remove any `href` pointing at `template_country.html` or a page that doesn't exist.
 - **Contact section** in `index.html`: stays wrapped in `{% comment %}…{% endcomment %}`
   until a real form backend exists. Use the Liquid comment (not `<!-- -->`) for any
   block that already contains an HTML comment, since HTML comments can't nest.
@@ -61,8 +61,7 @@ jekyll build
 ```
 
 Then check that every local `src`/`href` in `_site/**/*.html` (outside HTML
-comments) resolves to a file. Ignore `landing.html` / `generic.html` (template
-pages with known-missing `pic*.jpg`) as long as nothing links to them.
+comments) resolves to a file.
 
 Path rule: pages in `countries/` set `root: ../` in their front matter and use
 `../images/…`, `../assets/…`; the shared includes prefix paths with `{{ page.root }}`.
