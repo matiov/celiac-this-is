@@ -11,21 +11,26 @@ non-standard `GEM_HOME` this machine needs.
 
 ## Structure
 
-- **Content pages** (root `*.html`, each with Jekyll front matter for `title` /
-  `header_class`): [index.html](index.html) is the home page linking out to one page
-  per country. [japan.html](japan.html) and [usa.html](usa.html) are real,
-  filled-in country pages — one `<section class="spotlights">` block per city, each
-  followed by a `#<city>-food` section listing restaurants with gluten-free (🌾) and
-  vegetarian ratings out of 5.
-- **Placeholder pages**: [landing.html](landing.html) and [generic.html](generic.html)
-  are unmodified Forty template pages still full of Lorem Ipsum. They are real link
-  targets today — `index.html` points every country not yet written up (Peru, Ecuador,
-  Portugal, Italy, Germany, Switzerland, Belgium, France) at `landing.html`, and
-  `japan.html`/`usa.html` point unwritten cities at `generic.html`. Treat them as TODO
-  stubs to eventually replace with real per-country pages, not as content to remove.
+- **Content pages**: [index.html](index.html) is the home page with one tile per
+  country. Country pages live in [countries/](countries/) — [japan.html](countries/japan.html),
+  [usa.html](countries/usa.html), [portugal.html](countries/portugal.html) are real,
+  filled-in pages — one `<section class="spotlights">` block per city, each followed
+  by a `#<city>-food` section listing restaurants with gluten-free (🌾) and vegetarian
+  ratings out of 5. [template_country.html](countries/template_country.html) is the
+  skeleton to copy for a new country.
+- **Unwritten countries** (Peru, Ecuador, Italy, Germany, Switzerland, Belgium,
+  France): their tiles in `index.html` and entries in `_includes/menu.html` are
+  commented out until `countries/<name>.html` exists. The contact form in
+  `index.html` is commented out (Liquid `{% comment %}`) since it has no backend.
+  [landing.html](landing.html) and [generic.html](generic.html) are unmodified Forty
+  template pages, no longer linked from anywhere.
+- **Paths**: pages in `countries/` set `root: ../` in front matter and reference
+  `../images/…` / `../assets/…`; the includes prefix paths with `{{ page.root }}`
+  (empty for root-level pages). Keep this when adding a country page.
 - **`_includes/`**: [head.html](_includes/head.html) (`<head>` boilerplate + CSS
   links) and [header.html](_includes/header.html) (site header/logo) are pulled into
-  every page via `{% include %}`.
+  every page via `{% include %}`, as is [menu.html](_includes/menu.html) (the
+  slide-out country menu).
 - **`assets/`**: `css/` holds the precompiled stylesheet (`main.css`, `noscript.css`,
   `fontawesome-all.min.css`) actually linked from `head.html` — there is no Sass build
   step in this repo, so `css/` is the only styling source that matters. `js/` and
@@ -36,9 +41,11 @@ non-standard `GEM_HOME` this machine needs.
 
 ## Conventions
 
-- New country pages should follow the `japan.html`/`usa.html` pattern: a menu `<nav>`
+- New country pages go in `countries/` and follow the `japan.html`/`usa.html` pattern: a menu `<nav>`
   linking to `#<city>` anchors, one `spotlights` section + one `<city>-food` section
   per city, and ratings formatted as `<img src="images/logos/gf_logo.png"> X/5: ...`.
   Ratings are city-relative (a 5/5 is the best *in that city*, not a global scale).
 - `_site/` and `.jekyll-cache/` are build output — gitignored, safe to delete/regenerate
   anytime.
+- The `/publish-blog` skill (`.claude/skills/publish-blog/`) proofreads, comments
+  out unfinished bits, checks the build, and pushes when asked.
