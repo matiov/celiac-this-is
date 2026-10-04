@@ -17,11 +17,13 @@ non-standard `GEM_HOME` this machine needs.
   filled-in pages — one `<section class="spotlights">` block per city, each followed
   by a `#<city>-food` section listing restaurants with gluten-free (🌾) and vegetarian
   ratings out of 5. [template_country.html](countries/template_country.html) is the
-  skeleton to copy for a new country.
+  skeleton to copy for a new country; it has `published: false` so it isn't built
+  (remove that line in the copy, or preview with `jekyll serve --unpublished`).
 - **Unwritten countries** (Peru, Ecuador, Italy, Germany, Switzerland, Belgium,
   France): their tiles in `index.html` and entries in `_includes/menu.html` are
-  commented out until `countries/<name>.html` exists. The contact form in
-  `index.html` is commented out (Liquid `{% comment %}`) since it has no backend.
+  commented out until `countries/<name>.html` exists. The home page ends with a
+  "Rate Us!" section (`#rate`) embedding a Tally form (`tally.so/r/yPWPEx`); responses
+  are collected on tally.so, not in this repo.
 - **Paths**: pages in `countries/` set `root: ../` in front matter and reference
   `../images/…` / `../assets/…`; the includes prefix paths with `{{ page.root }}`
   (empty for root-level pages). Keep this when adding a country page.
@@ -33,12 +35,16 @@ non-standard `GEM_HOME` this machine needs.
   `fontawesome-all.min.css`) actually linked from `head.html` — there is no Sass build
   step in this repo, so `css/` is the only styling source that matters. `js/` and
   `webfonts/` are the Forty template's vendor scripts and Font Awesome font files.
-- **`images/`**: `covers/` (per-country card images on the home page), `cities/` and
+- **`images/`** (resized to ≤1600 px, ≤1920 px for `countries/` banners; keep new
+  photos in that range): `covers/` (per-country card images on the home page), `cities/` and
   `countries/` (per-city/country banner images on the country pages), `logos/`
-  (the gluten-free/vegetarian rating icons used throughout).
+  (the gluten-free/vegetarian rating icons, plus the favicons and `og-image.png`
+  link-preview image referenced from `head.html`).
 
 ## Conventions
 
+- Each country page sets `description: Gluten-Free and Vegetarian in <Country>` in its
+  front matter (used for search results and link previews).
 - New country pages go in `countries/` and follow the `japan.html`/`usa.html` pattern: a menu `<nav>`
   linking to `#<city>` anchors, one `spotlights` section + one `<city>-food` section
   per city, and ratings formatted as `<img src="images/logos/gf_logo.png"> X/5: ...`.

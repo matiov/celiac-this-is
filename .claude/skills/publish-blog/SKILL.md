@@ -1,6 +1,6 @@
 ---
 name: publish-blog
-description: Proofread the blog's pages, comment out anything not implemented yet (template placeholders, unwritten countries, the contact form), check the build, and push to GitHub when asked. Use when the user says "proofread", "clean up before publishing", "publish", or "push the blog".
+description: Proofread the blog's pages, comment out anything not implemented yet (template placeholders, unwritten countries), check the build, and push to GitHub when asked. Use when the user says "proofread", "clean up before publishing", "publish", or "push the blog".
 ---
 
 # Proofread, hide unfinished bits, and publish
@@ -47,9 +47,9 @@ contact details, or a form with no backend.
   uncommented and point at `countries/<name>.html` (menu: `{{ page.root }}countries/<name>.html`).
 - **Links to template pages**: spotlight images use `<a class="image">` with no
   `href`; remove any `href` pointing at `template_country.html` or a page that doesn't exist.
-- **Contact section** in `index.html`: stays wrapped in `{% comment %}…{% endcomment %}`
-  until a real form backend exists. Use the Liquid comment (not `<!-- -->`) for any
-  block that already contains an HTML comment, since HTML comments can't nest.
+- **Rate Us section** (`#rate` in `index.html`) is a live Tally embed — leave it
+  visible. If you need to hide a block that already contains an HTML comment, use
+  `{% comment %}…{% endcomment %}` instead of `<!-- -->`, since HTML comments can't nest.
 - Comment marker for HTML: `<!-- Not written up yet: uncomment once the country page exists.` … `-->`.
 
 ## 3. Check the build

@@ -1,5 +1,13 @@
 <title>{{ page.title }}</title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+{% assign description = page.description | default: "Where to eat gluten-free (and vegetarian) while travelling." %}
+<meta name="description" content="{{ description }}" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="{{ page.title }}" />
+<meta property="og:description" content="{{ description }}" />
+<meta property="og:image" content="https://matiov.github.io/celiac-this-is/images/logos/og-image.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="{{ page.root }}images/logos/favicon-32.png" />
+<link rel="apple-touch-icon" href="{{ page.root }}images/logos/favicon-180.png" />
 <link rel="stylesheet" href="{{ page.root }}assets/css/main.css" />
 <noscript><link rel="stylesheet" href="{{ page.root }}assets/css/noscript.css" /></noscript>
