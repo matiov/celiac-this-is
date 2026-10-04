@@ -2994,6 +2994,14 @@ input, select, textarea {
 					width: 65em;
 				}
 
+				.spotlights > section > .content .visit-date {
+					font-size: 0.7em;
+					font-weight: 600;
+					letter-spacing: 0.25em;
+					text-transform: uppercase;
+					margin-top: -1em;
+				}
+
 			.spotlights > section:nth-child(2n) {
 				-moz-flex-direction: row-reverse;
 				-webkit-flex-direction: row-reverse;
