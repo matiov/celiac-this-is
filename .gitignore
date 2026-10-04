@@ -1,3 +1,22 @@
+# Jekyll build output and caches
 _site/
 .jekyll-cache/
 .jekyll-metadata
+.sass-cache/
+
+# Ruby/Bundler (if a Gemfile is ever added)
+.bundle/
+vendor/
+
+# Editor and IDE settings
+.vscode/
+.idea/
+*.swp
+*~
+
+# Claude Code per-user settings (the shared skills in .claude/skills stay tracked)
+.claude/settings.local.json
+
+# OS files
+.DS_Store
+Thumbs.db

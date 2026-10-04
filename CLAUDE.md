@@ -49,6 +49,8 @@ non-standard `GEM_HOME` this machine needs.
   linking to `#<city>` anchors, one `spotlights` section + one `<city>-food` section
   per city, and ratings formatted as `<img src="images/logos/gf_logo.png"> X/5: ...`.
   Ratings are city-relative (a 5/5 is the best *in that city*, not a global scale).
+- [_config.yml](_config.yml) only lists files Jekyll must not publish (`CLAUDE.md`,
+  `README.txt`); add any new repo-only docs there.
 - `_site/` and `.jekyll-cache/` are build output — gitignored, safe to delete/regenerate
   anytime.
 - The `/publish-blog` skill (`.claude/skills/publish-blog/`) proofreads, comments

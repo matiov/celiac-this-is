@@ -1,0 +1,4 @@
+# Repo docs and tooling that shouldn't be published as part of the site.
+exclude:
+  - CLAUDE.md
+  - README.txt
